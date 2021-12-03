@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+form{
+	padding: 10px;
+}
+
+form dl dt{
+	width: 100px;
+	height: 10px;
+	float:left;
+	clear:both;
+}
+
+form dt dd{
+	padding: 100px;
+	margin-bottom:10px;
+}

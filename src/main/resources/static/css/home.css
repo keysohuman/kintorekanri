@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.kintoretable{
+	width: 800px;
+	height: 200px;
+	overflow-y: scroll;
+}
+
+.targettable{
+	width: 400px;
+
+}
+
+#my-table.bar{
+	height: 100px;
+	width: 400px;
+}

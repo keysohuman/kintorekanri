@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link th:href="@{/css/target.css}" rel="stylesheet">
+<title>筋トレ目標設定</title>
+</head>
+<body>
+
+<h1>筋トレ目標設定</h1>
+<ul class="nav nav-tabs">
+
+ 	<li class="nav-item">
+ 		<a class="nav-link" href="http://localhost:8080/home">ホーム</a>
+ 	</li>
+ 	<li class="nav-item">
+ 		<a class="nav-link active" href="http://localhost:8080/target">目標設定</a>
+ 	</li>
+ 	<li class="nav nav-item">
+ 		<a class="nav-link" href="http://localhost:8080/record">筋トレ記録</a>
+ 	</li>
+
+ </ul>
+
+<br>
+
+<form action="/target" method="post" th:object="${targetForm}">
+<dl>
+<dt>目標期間</dt>
+<dd><input type="date" name="kigen" th:field="*{kigen}"></dd>
+<dt>腕立て</dt>
+<dd><input type="text" name="ude" th:field="*{ude}">回</dd>
+<dt>腹筋</dt>
+<dd><input type="text" name="hara" th:field="*{hara}">回</dd>
+<dt>スクワット</dt>
+<dd><input type="text" name="asi" th:field="*{asi}">回</dd>
+</dl>
+
+<ul>
+ <li th:each="error:${#fields.detailedErrors()}">
+  <span th:text="${error.message}">Error message</span>
+ </li>
+</ul>
+<input class="btn btn-primary" type="submit" value="登録"><br>
+</form>
+</body>
+</html>

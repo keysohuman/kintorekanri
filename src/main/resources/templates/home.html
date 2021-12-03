@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link th:href="@{/css/home.css}" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css">
+<title>筋トレ管理アプリ</title>
+</head>
+<body>
+ <h1>筋トレ管理アプリ</h1>
+ <ul class="nav nav-tabs">
+
+ 	<li class="nav-item">
+ 		<a class="nav-link active" href="http://localhost:8080/home">ホーム</a>
+ 	</li>
+ 	<li class="nav-item">
+ 		<a class="nav-link" href="http://localhost:8080/target">目標設定</a>
+ 	</li>
+ 	<li class="nav nav-item">
+ 		<a class="nav-link" href="http://localhost:8080/record">筋トレ記録</a>
+ 	</li>
+
+ </ul>
+<br>
+<br>
+<label>筋トレ記録</label>
+<div class="kintoretable">
+<div class="container">
+<table class="table table-bordered table-dark table-sm">
+<thead>
+ <tr>
+  <th scope="col">日にち</th>
+  <th scope="col">種目</th>
+  <th scope="col">回数</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr th:each="record : ${recordList}">
+  <td th:text="${#dates.format(record.day, 'YYYY/MM/dd')}"></td>
+  <td th:text="${record.event}"></td>
+  <td th:text="${record.count}"></td>
+ </tr>
+ </tbody>
+ </table><br>
+</div>
+</div>
+<br>
+ <label>目標達成度</label>
+ <div class="targettable">
+<div class="container">
+ <table class="table table-bordered table-dark">
+<tr>
+	<td scope="col">種目</td>
+	<td scope="col">目標達成までの回数</td>
+	<td scope="col">残り日数</td>
+ </tr>
+ <tr>
+ 	<td>腕立て</td>
+ 	<td th:text="${udeTarget} + 回"></td>
+ 	<td th:text="${term1}"></td>
+ </tr>
+ <tr>
+ 	<td>腹筋</td>
+ 	<td th:text="${haraTarget} + 回"></td>
+ 	<td th:text="${term2}"></td>
+ </tr>
+
+  <tr>
+ 	<td>スクワット</td>
+ 	<td th:text="${asiTarget} + 回"></td>
+ 	<td th:text="${term3}"></td>
+ </tr>
+ </table>
+</div>
+</div>
+</body>
+</html>
